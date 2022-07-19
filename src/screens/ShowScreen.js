@@ -5,10 +5,14 @@ import { Context } from "../context/BlogContext";
 const ShowScreen = ({ navigation }) => {
   const { state } = useContext(Context);
 
+  const blogPost = state.find(
+    (blogPost) => blogPost.id === navigation.getParam("id")
+  );
+
   console.log(navigation.getParam("id"));
   return (
     <View>
-      <Text>ShowScreen</Text>
+      <Text>{blogPost.title}</Text>
     </View>
   );
 };
