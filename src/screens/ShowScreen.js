@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Context } from "../context/BlogContext";
-import { AntDesign } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-web";
+import { Entypo } from "@expo/vector-icons";
+//import { TouchableOpacity } from "react-native-web";
 
 const ShowScreen = ({ navigation }) => {
   const { state } = useContext(Context);
@@ -19,17 +19,20 @@ const ShowScreen = ({ navigation }) => {
     </View>
   );
 };
-/*
-ShowScreen.navigationOptions = () => {
+
+ShowScreen.navigationOptions = ({ navigation }) => {
   return {
     headerRight: () => (
-      <TouchableOpacity>
-        <AntDesign name="edit" size={24} />
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("Edit", { id: navigation.getParam("id") })
+        }
+      >
+        <Entypo name="edit" size={30} color="black" />
       </TouchableOpacity>
     ),
   };
 };
-*/
 
 const styles = StyleSheet.create({
   title: {
